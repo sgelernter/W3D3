@@ -41,8 +41,6 @@ end
 def deep_dup(arr)
     return arr.dup if arr.none? {|ele| ele.is_a?(Array)}
     
-    # remainder = deep_dup(arr[1..-1])
-
     arr.map do |ele|
         if ele.is_a?(Array) && ele.any? {|subele| subele.is_a?(Array)}
             deep_dup(ele)
@@ -52,26 +50,21 @@ def deep_dup(arr)
             ele.dup
         end
     end
-
 end
 
-            
-
-    # if arr.first.is_a?(Array)
-    #     deep_dup(arr[0]) + deep_dup(remainder)
-    # else
-    #     arr[0].dup + deep_dup(remainder)
-    # end
-
+def iter_fib(n)
+    new_array = [0, 1]
+    return new_array[0...n] if n < 3
+    while new_array.length < n
+        new_array << (new_array[-1] + new_array[-2])
+    end
+    new_array
 end
 
-robot_parts = [
-    ["nuts", "bolts", "washers"],
-    ["capacitors", "resistors", "inductors"]
-]
+def rec_fib(n)
+    return [0] if n == 1
+    return [0, 1] if n == 2 
+    fib_array = rec_fib(n - 1) 
+    fib_array << fib_array[-2..-1].sum
+end
 
-robot_parts_copy = deep_dup(robot_parts)
-# arr1 = [1, [2], [3, [4]]]
-# arr2 = deep_dup([1, [2], [3, [4]]])
-# sam = [1, [2, 3]]
-# sam2 = deep_dup(sam)
