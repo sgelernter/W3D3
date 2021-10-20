@@ -98,7 +98,6 @@ def merge_sort(array)
 
     middle = array.length / 2
 
-    # debugger
     merge(merge_sort(array[0...middle]), merge_sort(array[middle..-1]))
 
 end
@@ -134,8 +133,22 @@ def merge(array1, array2)
 
 end
 
-# p merge([9], [1, 3])
-# p merge_sort([4, 3, 1])
-p merge_sort([4, 2, 3, 1, 8])
-# p merge_sort([4, 2, 3, 1, 7, 9, 2, 5, 8, 5, 7, 2])
-# p merge_sort([4, 2, 3, 1, 7, 9, 2, 5, 8, 5, 7, 2, 9, 3, 4, 8])
+# # p merge([9], [1, 3])
+# # p merge_sort([4, 3, 1])
+# p merge_sort([4, 2, 3, 1, 8])
+# # p merge_sort([4, 2, 3, 1, 7, 9, 2, 5, 8, 5, 7, 2])
+# # p merge_sort([4, 2, 3, 1, 7, 9, 2, 5, 8, 5, 7, 2, 9, 3, 4, 8])
+
+def subsets(arr)
+    return [] if arr.length == 0
+    return arr if arr.length == 1
+    all_previous_sets = subsets(arr[0...-1])
+    all_previous_sets + arr[-1] 
+ 
+end
+
+subsets([]) # => [[]]
+subsets([1]) # => [[], [1]]
+subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
