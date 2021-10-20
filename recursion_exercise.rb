@@ -32,7 +32,7 @@ def exp_2(num, exp)
     end
 end
 
-p exp_2(2, 2)
-p exp_2(2, 3)
-p exp_2(3, 3)
-p exp_2(10, 0)
+# p exp_2(2, 2)
+# p exp_2(2, 3)
+# p exp_2(3, 3)
+# p exp_2(10, 0)
