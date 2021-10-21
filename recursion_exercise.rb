@@ -140,15 +140,18 @@ end
 # # p merge_sort([4, 2, 3, 1, 7, 9, 2, 5, 8, 5, 7, 2, 9, 3, 4, 8])
 
 def subsets(arr)
-    return [] if arr.length == 0
-    return arr if arr.length == 1
+    return [[]] if arr.length == 0
+    return [[], [1]] if arr.length == 1
+
     all_previous_sets = subsets(arr[0...-1])
-    all_previous_sets + arr[-1] 
- 
+    
+    plus_last = all_previous_sets.map {|subArr| subArr + [arr[-1]] }
+    all_previous_sets + plus_last
+    
 end
 
-subsets([]) # => [[]]
-subsets([1]) # => [[], [1]]
-subsets([1, 2]) # => [[], [1], [2], [1, 2]]
-subsets([1, 2, 3])
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3])
 # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
